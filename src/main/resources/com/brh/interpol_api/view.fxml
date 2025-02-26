@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+
+<VBox prefHeight="755.0" prefWidth="714.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brh.interpol_api.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <HBox prefHeight="26.0" prefWidth="422.0">
+        <children>
+
+            <Label fx:id="welcomeText" prefHeight="26.0" prefWidth="100.0" text="Name" />
+            <TextField fx:id="nameTf" prefHeight="26.0" prefWidth="574.0" />
+        </children>
+    </HBox>
+    <HBox layoutX="30.0" layoutY="30.0" prefHeight="24.0" prefWidth="370.0">
+        <children>
+            <Label fx:id="welcomeText1" prefHeight="26.0" prefWidth="432.0" text="Vorname" />
+            <TextField fx:id="forenameTf" prefHeight="26.0" prefWidth="908.0" />
+            <AnchorPane prefHeight="128.0" prefWidth="306.0" />
+        </children>
+    </HBox>
+    <HBox layoutX="30.0" layoutY="121.0" prefHeight="24.0" prefWidth="370.0">
+        <children>
+            <Label fx:id="welcomeText11" prefHeight="26.0" prefWidth="110.0" text="Freier Suchtext " />
+            <TextField fx:id="freeSearchTf" prefHeight="26.0" prefWidth="590.0" />
+        </children>
+    </HBox>
+    <Button onAction="#onSearchClick" prefHeight="26.0" prefWidth="675.0" text="Suchen" />
+    <Label prefHeight="21.0" prefWidth="158.0" text="Bild" />
+   <WebView fx:id="webView" prefHeight="263.0" prefWidth="674.0" />
+    <TableView fx:id="tableView" onMouseClicked="#onTableClick" prefHeight="449.0" prefWidth="674.0">
+        <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="117.19997596740723" text="Name" />
+            <TableColumn fx:id="forenameColumn" prefWidth="123.79998779296875" text="Vorname" />
+            <TableColumn fx:id="birthdayColumn" prefWidth="122.5999755859375" text="Geburtsdatum" />
+            <TableColumn fx:id="imageColumn" prefWidth="308.79999389648435" text="Image URL" />
+        </columns>
+    </TableView>
+</VBox>
