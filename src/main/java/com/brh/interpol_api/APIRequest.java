@@ -18,20 +18,37 @@ public class APIRequest {
     public void getData(String name, String forename, String freeSearch, Consumer< ArrayList<Person> > onSuccessCallback ){
         //Callback zwischenspeichern für spätere Verwendung
         this.onSuccessCallback = onSuccessCallback;
-        sendRequest(name, forename, freeSearch);
+        String urlString = createURL(name, forename, freeSearch);
+        sendRequest(urlString);
 
     }
 
-
-    private void sendRequest( String name, String forename, String freeSearch ){
-
+    private String createURL(String name, String forename, String freeSearch){
         String urlString ="https://ws-public.interpol.int/notices/v1/red?page=1&resultPerPage=10000";
+
         if(!name.isEmpty())
             urlString+="&name="+name;
         if(!forename.isEmpty())
             urlString+="&forename="+forename;
         if(!freeSearch.isEmpty())
             urlString+="&freeText="+freeSearch;
+        return urlString;
+    }
+
+    //ToDO Überladung von CreateURL, bei der page und resultPerPage angegeben werden können
+    private String createURL(String name, String forename, String freeSearch, int page, int resultPerPage){
+        String urlString ="https://ws-public.interpol.int/notices/v1/red?page="+page+"&resultPerPage="+resultPerPage;
+
+        if(!name.isEmpty())
+            urlString+="&name="+name;
+        if(!forename.isEmpty())
+            urlString+="&forename="+forename;
+        if(!freeSearch.isEmpty())
+            urlString+="&freeText="+freeSearch;
+        return urlString;
+    }
+
+    private void sendRequest( String urlString ){
 
         try{
             //dient dazu die asynchron zukünftig empfangene Antwort der API weiterzuleiten
